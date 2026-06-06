@@ -1,0 +1,58 @@
+{
+  "name": "dtale-open",
+  "displayName": "Open in d-Tale",
+  "description": "Right-click a .json or .csv file to inspect it in d-Tale in your browser.",
+  "version": "0.1.0",
+  "publisher": "local",
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:dtaleOpen.open"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "dtaleOpen.open",
+        "title": "Open in d-Tale"
+      }
+    ],
+    "configuration": {
+      "title": "Open in d-Tale",
+      "properties": {
+        "dtaleOpen.scriptPath": {
+          "type": "string",
+          "default": "",
+          "description": "Path to the dtale_open.sh launcher script. Leave empty to use the dtale_open.sh bundled with this extension."
+        }
+      }
+    },
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "dtaleOpen.open",
+          "when": "resourceExtname == .json || resourceExtname == .jsonl || resourceExtname == .ndjson || resourceExtname == .csv",
+          "group": "navigation@99"
+        }
+      ],
+      "editor/title/context": [
+        {
+          "command": "dtaleOpen.open",
+          "when": "resourceExtname == .json || resourceExtname == .jsonl || resourceExtname == .ndjson || resourceExtname == .csv",
+          "group": "navigation@99"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "dtaleOpen.open",
+          "when": "resourceExtname == .json || resourceExtname == .jsonl || resourceExtname == .ndjson || resourceExtname == .csv",
+          "group": "navigation@99"
+        }
+      ]
+    }
+  }
+}
